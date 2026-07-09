@@ -4,9 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sono:wght,MONO@200..800,1&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
 <title>Almashii Danylo</title>
 
 <style>
+:root {
+    --page-margin: clamp(0px, calc(300px * (100vw / 1920px)), 300px);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -14,238 +22,218 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #111;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/bg.png');
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    color: #eee;
+    font-family: "Source Code Pro", monospace;
+    background-color: #050505;
+    color: #f4f4f4;
     line-height: 1.6;
     min-height: 100vh;
 }
 
-.container {
-    max-width: 1100px;
-    margin: auto;
-    padding: 50px 25px;
-}
-
-header {
-    text-align: left;
-    margin-bottom: 35px;
-}
-
-h1 {
-    font-size: 2.6rem;
-    margin-bottom: 0px;
-    font-weight: normal;
-}
-
-.subheader {
-    font-size: 1rem;
-    color: #aaa;
-    margin-bottom: 15px;
-    text-transform: none;
-}
-
-nav {
-    margin-bottom: 20px;
-}
-
-nav a {
-    color: #bbb;
-    text-decoration: none;
-    margin: 0 10px 0 0;
-    transition: color 0.2s;
-}
-
-nav a:hover {
-    color: red;
-}
-
-.about {
-    max-width: 700px;
-    margin: 0;
-    text-align: left;
-    color: #ccc;
-    margin-bottom: 45px;
-}
-
 .gallery {
+    margin: 2.5rem var(--page-margin) 0;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 0;
 }
 
-.gallery a {
-    display: block;
-    aspect-ratio: 4 / 3;
+.gallery-item {
+    aspect-ratio: 1 / 1;
+    background: #000000;
     overflow: hidden;
-    border-radius: 4px;
+    position: relative;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    appearance: none;
 }
 
-.gallery img {
+.gallery-item img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
-    transition: transform .15s ease, opacity .15s ease;
 }
 
-.gallery img:hover {
+.gallery-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 0 solid #000000;
+    pointer-events: none;
+    transition: border-width 0.25s ease;
+}
+
+.gallery-item:hover::after {
+    border-width: 20px;
+}
+
+.projects-header {
+    margin: 0 var(--page-margin);
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.project-view {
+    margin: 0 var(--page-margin);
+}
+
+.back-button {
+    background: none;
+    border: 0;
+    color: #f4f4f4;
+    font: inherit;
+    cursor: pointer;
+    padding: 0 0 1rem 0;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+.project-view__content {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+.project-view__image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+}
+
+.project-view__text h3 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.project-view__text p {
+    font-size: 1rem;
+    color: #e7e7e7;
+    line-height: 1.7;
+}
+
+.page {
+    margin: 40px var(--page-margin) 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+.layout {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 3rem;
+    align-items: start;
+}
+
+.left-block {
+    text-align: left;
+}
+
+.left-block h1 {
+    font-size: 2.9rem;
+    font-weight: 600;
+    margin-bottom: -1rem;
+    letter-spacing: -0.02em;
+}
+
+.subheader {
+    font-size: 0.95rem;
+    color: #d2d2d2;
+    margin-bottom: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+}
+
+.left-block p {
+    width: 100%;
+    max-width: 100%;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    letter-spacing: 0.1em;
+    color: #e0e0e0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+    text-align: right;
+    height: auto;
+    padding-top: 0.35rem;
+}
+
+.links a {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    color: #f4f4f4;
+    text-decoration: none;
+    font-size: 1.4rem;
+    line-height: 0.95;
+    gap: 0.05em;
+}
+
+.links a span {
+    display: block;
+}
+
+.links a:hover {
+    color: #ff0000;
     transform: scale(1.02);
-    opacity: 0.9;
 }
 
-@media (max-width: 900px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-}
 </style>
 
 </head>
 <body>
 
-<div class="container">
+<div class="page">
+    <div class="layout">
+        <div class="left-block">
+            <h1>ALMASHII DANYLO</h1>
+            <div class="subheader">Brno, Czech Republic</div>
+            <p>
+                3d Hard surface artist. Specializing in stressing out technical artists, bricking gpus and harrasing claude for blender plugins.
+            </p>
+        </div>
 
-<header>
-    <h1>Almashii Danylo</h1>
-
-    <nav>
-        <a href="https://www.artstation.com/demiian">Artstation</a>
-        <a href="https://www.linkedin.com/in/d-almashii/">LinkedIn</a>
-        <a href="cv.pdf">Resume</a>
-        <a href="mailto:d.almashii@outlook.com">d.almashii@outlook.com</a>
-    </nav>
-
-    <div class="about">
-        <p>
-            3D Hard surface artist with 5+ years оf professional experience. Specialized іn vehicle, weapon, and sci-fi environments, 
-            Experience includes AAA asset creation, indie and mobile game development, CAD design and architectural visualization.
-        </p>
+        <div class="links">
+            <a href="https://www.artstation.com/demiian" target="_blank"><span>artstation</span></a>
+            <a href="https://www.linkedin.com/in/d-almashii/" target="_blank"><span>linkedin</span></a>
+            <a href="cv.pdf" target="_blank"><span>resume</span></a>
+            <a href="mailto:d.almashii@outlook.com"><span>email</span></a>
+            <a href="https://t.me/d_almashii" target="_blank"><span>telegram</span></a>
+            <a href="https://discord.com/users/iiseraa" target="_blank"><span>discord</span></a>
+        </div>
     </div>
-</header>
+</div>
 
-<section class="gallery">
+<div class="projects-header">Projects:</div>
 
-    <a href="images/project01.png" target="_blank">
-        <img src="images/thumbnail/project01.jpg" alt="Project 1">
-    </a>
-
-    <a href="images/project02.png" target="_blank">
-        <img src="images/thumbnail/project02.jpg" alt="Project 2">
-    </a>
-
-    <a href="images/project03.png" target="_blank">
-        <img src="images/thumbnail/project03.jpg" alt="Project 3">
-    </a>
-
-    <a href="images/project04.png" target="_blank">
-        <img src="images/thumbnail/project04.jpg" alt="Project 4">
-    </a>
-
-    <a href="images/project05.png" target="_blank">
-        <img src="images/thumbnail/project05.jpg" alt="Project 5">
-    </a>
-
-    <a href="images/project06.png" target="_blank">
-        <img src="images/thumbnail/project06.jpg" alt="Project 6">
-    </a>
-
-    <a href="images/project07.png" target="_blank">
-        <img src="images/thumbnail/project07.jpg" alt="Project 7">
-    </a>
-
-    <a href="images/project08.png" target="_blank">
-        <img src="images/thumbnail/project08.jpg" alt="Project 8">
-    </a>
-
-    <a href="images/project09.png" target="_blank">
-        <img src="images/thumbnail/project09.jpg" alt="Project 9">
-    </a>
-
-    <a href="images/project10.png" target="_blank">
-        <img src="images/thumbnail/project10.jpg" alt="Project 10">
-    </a>
-
-    <a href="images/project11.png" target="_blank">
-        <img src="images/thumbnail/project11.jpg" alt="Project 11">
-    </a>
-
-    <a href="images/project12.png" target="_blank">
-        <img src="images/thumbnail/project12.jpg" alt="Project 12">
-    </a>
-
-    <a href="images/project13.png" target="_blank">
-        <img src="images/thumbnail/project13.jpg" alt="Project 13">
-    </a>
-
-    <a href="images/project14.png" target="_blank">
-        <img src="images/thumbnail/project14.jpg" alt="Project 14">
-    </a>
-
-    <a href="images/project15.png" target="_blank">
-        <img src="images/thumbnail/project15.jpg" alt="Project 15">
-    </a>
-
-    <a href="images/project16.png" target="_blank">
-        <img src="images/thumbnail/project16.jpg" alt="Project 16">
-    </a>
-
-    <a href="images/project17.png" target="_blank">
-        <img src="images/thumbnail/project17.jpg" alt="Project 17">
-    </a>
-
-    <a href="images/project18.png" target="_blank">
-        <img src="images/thumbnail/project18.jpg" alt="Project 18">
-    </a>
-
-    <a href="images/project19.png" target="_blank">
-        <img src="images/thumbnail/project19.jpg" alt="Project 19">
-    </a>
-
-    <a href="images/project20.png" target="_blank">
-        <img src="images/thumbnail/project20.jpg" alt="Project 20">
-    </a>
-
-    <a href="images/project21.png" target="_blank">
-        <img src="images/thumbnail/project21.jpg" alt="Project 21">
-    </a>
-
-    <a href="images/project22.png" target="_blank">
-        <img src="images/thumbnail/project22.jpg" alt="Project 22">
-    </a>
-
-    <a href="images/project23.png" target="_blank">
-        <img src="images/thumbnail/project23.jpg" alt="Project 23">
-    </a>
-
-    <a href="images/project24.png" target="_blank">
-        <img src="images/thumbnail/project24.jpg" alt="Project 24">
-    </a>
-
-    <a href="images/project25.png" target="_blank">
-        <img src="images/thumbnail/project25.jpg" alt="Project 25">
-    </a>
-
-    <a href="images/project26.png" target="_blank">
-        <img src="images/thumbnail/project26.jpg" alt="Project 26">
-    </a>
-
-    <a href="images/project27.png" target="_blank">
-        <img src="images/thumbnail/project27.jpg" alt="Project 27">
-    </a>
-
-</section>
-
+<div id="gallery-shell">
+    <div class="gallery">
+        <a class="gallery-item" href="viablft.html">
+            <img src="images/thumbnail/th_viablft.jpg" alt="viablft">
+        </a>
+        <a class="gallery-item" href="promag.html">
+            <img src="images/thumbnail/th_promag.jpg" alt="promag">
+        </a>
+        <a class="gallery-item" href="biber.html">
+            <img src="images/thumbnail/th_biber.jpg" alt="biber">
+        </a>
+        <a class="gallery-item" href="romeo.html">
+            <img src="images/thumbnail/th_romeo.jpg" alt="romeo">
+        </a>
+    </div>
 </div>
 
 </body>

@@ -1,250 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Sono:wght,MONO@200..800,1&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
 
-<title>Almashii Danylo</title>
-
-<style>
-:root {
-    --page-margin: clamp(0px, calc(300px * (100vw / 1920px)), 300px);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Source Code Pro", monospace;
-    background-color: #050505;
-    color: #f4f4f4;
-    line-height: 1.6;
-    min-height: 100vh;
-}
-
-.gallery {
-    margin: 2.5rem var(--page-margin) 0;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    padding: 0;
-}
-
-.gallery-item {
-    aspect-ratio: 1 / 1;
-    background: #000000;
-    overflow: hidden;
-    position: relative;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    appearance: none;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: cover;
-}
-
-.gallery-item::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 0 solid #000000;
-    pointer-events: none;
-    transition: border-width 0.25s ease;
-}
-
-.gallery-item:hover::after {
-    border-width: 20px;
-}
-
-.projects-header {
-    margin: 0 var(--page-margin);
-    font-size: 2.2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    letter-spacing: -0.02em;
-}
-
-.project-view {
-    margin: 0 var(--page-margin);
-}
-
-.back-button {
-    background: none;
-    border: 0;
-    color: #f4f4f4;
-    font: inherit;
-    cursor: pointer;
-    padding: 0 0 1rem 0;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-}
-
-.project-view__content {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
-    gap: 2rem;
-    align-items: start;
-}
-
-.project-view__image {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    display: block;
-}
-
-.project-view__text h3 {
-    font-size: 1.6rem;
-    font-weight: 600;
-    margin-bottom: 0.8rem;
-}
-
-.project-view__text p {
-    font-size: 1rem;
-    color: #e7e7e7;
-    line-height: 1.7;
-}
-
-.page {
-    margin: 40px var(--page-margin) 0;
-    padding: 0;
-    display: flex;
-    align-items: flex-start;
-}
-
-.layout {
-    width: 100%;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 3rem;
-    align-items: start;
-}
-
-.left-block {
-    text-align: left;
-}
-
-.left-block h1 {
-    font-size: 2.9rem;
-    font-weight: 600;
-    margin-bottom: -1rem;
-    letter-spacing: -0.02em;
-}
-
-.subheader {
-    font-size: 0.95rem;
-    color: #d2d2d2;
-    margin-bottom: 1.3rem;
-    text-transform: uppercase;
-    letter-spacing: 0.24em;
-}
-
-.left-block p {
-    width: 100%;
-    max-width: 100%;
-    font-size: 1.3rem;
-    line-height: 1.2;
-    letter-spacing: 0.1em;
-    color: #e0e0e0;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-}
-
-.links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.4rem;
-    text-align: right;
-    height: auto;
-    padding-top: 0.35rem;
-}
-
-.links a {
-    display: inline-flex;
-    flex-direction: column;
-    align-items: flex-end;
-    color: #f4f4f4;
-    text-decoration: none;
-    font-size: 1.4rem;
-    line-height: 0.95;
-    gap: 0.05em;
-}
-
-.links a span {
-    display: block;
-}
-
-.links a:hover {
-    color: #f4f4f4;
-    transform: none;
-}
-
-.links .link-text {
-    color: #f4f4f4;
-    text-decoration: none;
-    font-size: 1.4rem;
-    line-height: 0.95;
-}
-
-</style>
-
+    <title>Almashii Danylo</title>
 </head>
 <body>
 
-<div class="page">
-    <div class="layout">
-        <div class="left-block">
-            <h1>ALMASHII DANYLO</h1>
-            <div class="subheader">Brno, Czech Republic</div>
-            <p>
-                3d Hard surface artist. Specializing in vehicle, prop, and weapon modeling, as well as CAD design. Open for work opportunities.
-            </p>
+    <div class="page-wrap">
+
+        <!-- ===== HEADER ===== -->
+        <div class="page">
+            <div class="layout">
+                <div class="left-block">
+                    <h1>ALMASHII DANYLO</h1>
+                    <div class="subheader">Brno, Czech Republic</div>
+                    <p class="bio">
+                        3d Hard surface artist. Specializing in vehicle, prop, and weapon modeling, as well as CAD design. Open for work opportunities.
+                    </p>
+                </div>
+
+                <div class="links">
+                    <a href="https://www.artstation.com/demiian" target="_blank">artstation</a>
+                    <a href="https://www.linkedin.com/in/d-almashii/" target="_blank">linkedin</a>
+                    <a href="cv.pdf" target="_blank">resume</a>
+                    <a href="mailto:d.almashii@outlook.com">email</a>
+                    <a href="https://t.me/d_almashii" target="_blank">telegram</a>
+                    <span class="link-text">discord – iiseraa</span>
+                </div>
+            </div>
         </div>
 
-        <div class="links">
-            <a href="https://www.artstation.com/demiian" target="_blank"><span>artstation</span></a>
-            <a href="https://www.linkedin.com/in/d-almashii/" target="_blank"><span>linkedin</span></a>
-            <a href="cv.pdf" target="_blank"><span>resume</span></a>
-            <a href="mailto:d.almashii@outlook.com"><span>email</span></a>
-            <a href="https://t.me/d_almashii" target="_blank"><span>telegram</span></a>
-            <span class="link-text">discord - iiseraa</span>
+        <!-- ===== PROJECTS HEADER ===== -->
+        <div class="projects-header">Projects:</div>
+
+        <!-- ===== GALLERY ===== -->
+        <div class="gallery">
+            <a class="gallery-item" href="viablft.html">
+                <img src="images/thumbnail/th_viablft.jpg" alt="viablft" loading="lazy" />
+            </a>
+            <a class="gallery-item" href="promag.html">
+                <img src="images/thumbnail/th_promag.jpg" alt="promag" loading="lazy" />
+            </a>
+            <a class="gallery-item" href="motogp.html">
+                <img src="images/thumbnail/th_motogp.jpg" alt="motogp" loading="lazy" />
+            </a>
+
+            <a class="gallery-item" href="romeo.html">
+                <img src="images/thumbnail/th_romeo.jpg" alt="romeo" loading="lazy" />
+            </a>
+            <a class="gallery-item" href="biber.html">
+                <img src="images/thumbnail/th_biber.jpg" alt="biber" loading="lazy" />
+            </a>
+            <a class="gallery-item" href="gpnvg.html">
+                <img src="images/thumbnail/th_gpnvg.jpg" alt="gpnvg" loading="lazy" />
+            </a>
+
+
         </div>
-    </div>
-</div>
 
-<div class="projects-header">Projects:</div>
-
-<div id="gallery-shell">
-    <div class="gallery">
-        <a class="gallery-item" href="viablft.html">
-            <img src="images/thumbnail/th_viablft.jpg" alt="viablft">
-        </a>
-        <a class="gallery-item" href="promag.html">
-            <img src="images/thumbnail/th_promag.jpg" alt="promag">
-        </a>
-        <a class="gallery-item" href="biber.html">
-            <img src="images/thumbnail/th_biber.jpg" alt="biber">
-        </a>
-        <a class="gallery-item" href="romeo.html">
-            <img src="images/thumbnail/th_romeo.jpg" alt="romeo">
-        </a>
-        <a class="gallery-item" href="gpnvg.html">
-            <img src="images/thumbnail/th_gpnvg.jpg" alt="gpnvg">
-        </a>
     </div>
-</div>
+    <!-- /page-wrap -->
 
 </body>
 </html>
